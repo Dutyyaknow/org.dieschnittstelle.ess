@@ -2,8 +2,8 @@
   <configuration default="false" name="JRS" type="JarApplication">
     <option name="JAR_PATH" value="$PROJECT_DIR$/org.dieschnittstelle.ess.jrs/target/jrs-webapp-1.0-SNAPSHOT-exec.jar" />
     <option name="VM_PARAMETERS" value="-Dresteasy.preferJacksonOverJsonB=true -Dresteasy.jackson.deserialization.whitelist.allowIfBaseType.prefix=* -Dresteasy.jackson.deserialization.whitelist.allowIfSubType.prefix=* -Dopenejb.jaxrs.fail-on-constrainedto=false" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="WORKING_DIRECTORY" value="C:\Users\olive\IdeaProjects\org.dieschnittstelle.ess" />
+    <option name="ALTERNATIVE_JRE_PATH" value="11" />
     <method v="2">
       <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.applications.jrs/pom.xml" goal="clean install" />
     </method>

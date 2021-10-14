@@ -27,6 +27,7 @@
     </build>
 
     <modules>
+        <module>..</module>
         <module>../org.dieschnittstelle.ess.bas</module>
         <module>../org.dieschnittstelle.ess.lib.utils</module>
         <module>../org.dieschnittstelle.ess.lib.entities.erp</module>

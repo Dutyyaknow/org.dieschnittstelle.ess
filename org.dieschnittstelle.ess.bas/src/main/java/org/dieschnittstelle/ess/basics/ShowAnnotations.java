@@ -48,9 +48,9 @@ public class ShowAnnotations {
             result.append(klasse.getSimpleName());
 
             for (Field f : klasse.getDeclaredFields()) {
-
                 f.setAccessible(true);
                 result.append(" " + f.getName() + ":" + f.get(instance));
+                f.toString();
             }
             show(result);
         }
@@ -63,6 +63,8 @@ public class ShowAnnotations {
         //  the string representation will not use the field's name, but the name
         //  specified in the the annotation. Regardless of @DisplayAs being present
         //  or not, the field's value will be included in the string representation.
+
+
 
     }
 

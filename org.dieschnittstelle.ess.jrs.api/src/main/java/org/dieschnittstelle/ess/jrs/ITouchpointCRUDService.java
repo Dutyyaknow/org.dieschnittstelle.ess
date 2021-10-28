@@ -33,5 +33,6 @@ public interface ITouchpointCRUDService {
 	/*
 	 * TODO JRS1: add a new annotated method for using the updateTouchpoint functionality of TouchpointCRUDExecutor and implement it
 	 */
-
+	// PUT /touchpoints/$id ($id liefert Wert für id Argument, touchpoint wird im Body übermittelt)
+	//StationaryTouchpoint updateTouchpoint(long id, StationaryTouchpoint touchpoint);
 }

@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
@@ -182,6 +183,35 @@ public class ShowTouchpointService {
 
 		logger.debug("client running: {}",client.isRunning());
 
+		/*try {
+			HttpDelete request = new HttpDelete("http://localhost:8080/api/touchpoints");
+
+			Future<HttpResponse> responseFuture = client.execute(request, null);
+			HttpResponse response = responseFuture.get();
+
+			show("response: %s", response.getStatusLine());
+
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+
+				// create an object input stream using getContent() from the
+				// response entity (accessible via getEntity())
+				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
+
+				// read the touchpoint object from the input stream
+				AbstractTouchpoint receivedTp = (AbstractTouchpoint) ois.readObject();
+
+				// return the object that you have read from the response
+				show("receivedTp: %s", receivedTp);
+				show("equals(): %s", tp.equals(receivedTp));
+				show("== : %s", tp == receivedTp);
+
+			}
+		}
+
+		catch (Exception e){
+			logger.error("got exception: " + e, e);
+			throw new RuntimeException(e);
+		}*/
 	}
 
 	/**
@@ -211,7 +241,7 @@ public class ShowTouchpointService {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
 			// write the object to the output stream
-			ObjectOutputStream oos = null;
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
 			oos.writeObject(tp);
 
 			// create a ByteArrayEntity and pass it the byte array from the
@@ -233,13 +263,22 @@ public class ShowTouchpointService {
 			// HttpStatus
 
 			/* if successful: */
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 
-			// create an object input stream using getContent() from the
-			// response entity (accessible via getEntity())
+				// create an object input stream using getContent() from the
+				// response entity (accessible via getEntity())
+				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
 
-			// read the touchpoint object from the input stream
+				// read the touchpoint object from the input stream
+				AbstractTouchpoint receivedTp = (AbstractTouchpoint) ois.readObject();
 
-			// return the object that you have read from the response
+				// return the object that you have read from the response
+				show("receivedTp: %s", receivedTp);
+				show("equals(): %s", tp.equals(receivedTp));
+				show("== : %s", tp == receivedTp);
+
+				return receivedTp;
+			}
 			return null;
 		} catch (Exception e) {
 			logger.error("got exception: " + e, e);

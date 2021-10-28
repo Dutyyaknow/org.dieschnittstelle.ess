@@ -20,7 +20,32 @@ public class ProductCRUDRESTClient {
 		/*
 		 * create a client for the web service using ResteasyClientBuilder and ResteasyWebTarget
 		 */
-		serviceProxy = null;
+		serviceProxy = new IProductCRUDService() {
+			@Override
+			public IndividualisedProductItem createProduct(IndividualisedProductItem prod) {
+				return null;
+			}
+
+			@Override
+			public List<IndividualisedProductItem> readAllProducts() {
+				return null;
+			}
+
+			@Override
+			public IndividualisedProductItem updateProduct(long id, IndividualisedProductItem update) {
+				return null;
+			}
+
+			@Override
+			public boolean deleteProduct(long id) {
+				return false;
+			}
+
+			@Override
+			public IndividualisedProductItem readProduct(long id) {
+				return null;
+			}
+		};
 	}
 
 	public AbstractProduct createProduct(IndividualisedProductItem prod) {

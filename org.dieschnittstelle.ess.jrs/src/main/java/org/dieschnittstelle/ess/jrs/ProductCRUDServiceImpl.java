@@ -2,7 +2,6 @@ package org.dieschnittstelle.ess.jrs;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.GenericCRUDExecutor;
-import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 import javax.servlet.ServletContext;
@@ -18,42 +17,42 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(TouchpointCRUDServiceImpl.class);
 
-	private GenericCRUDExecutor<IndividualisedProductItem> touchpointCRUD;
+	private GenericCRUDExecutor<IndividualisedProductItem> productCRUD;
 
 	public ProductCRUDServiceImpl(@Context ServletContext servletContext, @Context HttpServletRequest request) {
 		logger.info("<constructor>: " + servletContext + "/" + request);
 		// read out the dataAccessor
-		this.touchpointCRUD = (GenericCRUDExecutor<IndividualisedProductItem>) servletContext.getAttribute("touchpointCRUD");
+		this.productCRUD = (GenericCRUDExecutor<IndividualisedProductItem>) servletContext.getAttribute("productCRUD");
 
-		logger.debug("read out the touchpointCRUD from the servlet context: " + this.touchpointCRUD);
+		logger.debug("read out the productCRUD from the servlet context: " + this.productCRUD);
 	}
 
 	@Override
 	public IndividualisedProductItem createProduct(
 			IndividualisedProductItem prod) {
-		return (IndividualisedProductItem) this.touchpointCRUD.createObject(prod);
+		return (IndividualisedProductItem) this.productCRUD.createObject(prod);
 	}
 
 	@Override
 	public List<IndividualisedProductItem> readAllProducts() {
-		return (List) this.touchpointCRUD.readAllObjects();
+		return (List) this.productCRUD.readAllObjects();
 	}
 
 	@Override
 	public IndividualisedProductItem updateProduct(long id,
 			IndividualisedProductItem update) {
 		update.setId(id);
-		return this.touchpointCRUD.updateObject(update);
+		return this.productCRUD.updateObject(update);
 	}
 
 	@Override
 	public boolean deleteProduct(long id) {
-		return this.touchpointCRUD.deleteObject(id);
+		return this.productCRUD.deleteObject(id);
 	}
 
 	@Override
 	public IndividualisedProductItem readProduct(long id) {
-		return this.touchpointCRUD.readObject(id);
+		return this.productCRUD.readObject(id);
 	}
 	
 }

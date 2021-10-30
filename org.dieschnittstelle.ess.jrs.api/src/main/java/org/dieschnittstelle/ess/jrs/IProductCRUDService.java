@@ -18,7 +18,7 @@ import java.util.List;
  * und machen Sie diese Methoden mittels JAX-RS Annotationen als WebService verfuegbar
  */
 
-@Path("/touchpoints")
+@Path("/products")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 /*
@@ -36,18 +36,18 @@ public interface IProductCRUDService {
 
 	@Operation
 	@PUT
-	@Path("/{touchpointId}")
-	public IndividualisedProductItem updateProduct(long id,
+	@Path("/{id}")
+	public IndividualisedProductItem updateProduct(@PathParam("id") long id,
 												   IndividualisedProductItem update);
 
 	@Operation
 	@DELETE
-	@Path("/{touchpointId}")
-	boolean deleteProduct(long id);
+	@Path("/{id}")
+	boolean deleteProduct(@PathParam("id") long id);
 
 	@Operation
 	@GET
-	@Path("/{touchpointId}")
-	public IndividualisedProductItem readProduct(long id);
+	@Path("/{id}")
+	public IndividualisedProductItem readProduct(@PathParam("id") long id);
 
 }

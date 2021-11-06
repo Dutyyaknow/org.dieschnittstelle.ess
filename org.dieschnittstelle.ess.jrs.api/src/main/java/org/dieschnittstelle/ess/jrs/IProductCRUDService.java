@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.jrs;
 
+import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 
@@ -28,17 +29,17 @@ public interface IProductCRUDService {
 
 	@Operation
 	@POST
-	public IndividualisedProductItem createProduct(IndividualisedProductItem prod);
+	public AbstractProduct createProduct(AbstractProduct prod);
 
 	@Operation
 	@GET
-	public List<IndividualisedProductItem> readAllProducts();
+	public List<AbstractProduct> readAllProducts();
 
 	@Operation
 	@PUT
 	@Path("/{id}")
-	public IndividualisedProductItem updateProduct(@PathParam("id") long id,
-												   IndividualisedProductItem update);
+	public AbstractProduct updateProduct(@PathParam("id") long id,
+										 AbstractProduct update);
 
 	@Operation
 	@DELETE
@@ -48,6 +49,6 @@ public interface IProductCRUDService {
 	@Operation
 	@GET
 	@Path("/{id}")
-	public IndividualisedProductItem readProduct(@PathParam("id") long id);
+	public AbstractProduct readProduct(@PathParam("id") long id);
 
 }

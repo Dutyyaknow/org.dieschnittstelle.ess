@@ -2,6 +2,7 @@ package org.dieschnittstelle.ess.basics;
 
 
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
+import org.dieschnittstelle.ess.basics.annotations.DisplayAs;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
 
 import java.lang.reflect.Field;
@@ -47,10 +48,20 @@ public class ShowAnnotations {
             Class klasse = instance.getClass();
             result.append(klasse.getSimpleName());
 
-            for (Field f : klasse.getDeclaredFields()) {
-                f.setAccessible(true);
-                result.append(" " + f.getName() + ":" + f.get(instance));
-                f.toString();
+            for (Field currentField : klasse.getDeclaredFields()) {
+                currentField.setAccessible(true);
+
+                if(currentField.isAnnotationPresent(DisplayAs.class)) {
+                    DisplayAs displayAsAnnotation = currentField.getAnnotation(DisplayAs.class);
+                    String displayAs = displayAsAnnotation.value();
+                    result.append(" " + displayAs + ":" + currentField.get(instance));
+                }
+
+                else {
+                    result.append(" " + currentField.getName() + ":" + currentField.get(instance));
+                }
+
+                currentField.toString();
             }
             show(result);
         }

@@ -10,7 +10,7 @@ public class Milch {
 	@Units
 	private int menge;
 
-	@Brandname
+	@DisplayAs("Milchmarke")
 	private String markenname;
 
 	public int getMenge() {
@@ -21,6 +21,7 @@ public class Milch {
 		this.menge = menge;
 	}
 
+	@Brandname
 	public String getMarkenname() {
 		return markenname;
 	}

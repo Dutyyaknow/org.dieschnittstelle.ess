@@ -183,15 +183,15 @@ public class ShowTouchpointService {
 
 		logger.debug("client running: {}",client.isRunning());
 
-		/*try {
-			HttpDelete request = new HttpDelete("http://localhost:8080/api/touchpoints");
+		try {
+			HttpDelete request = new HttpDelete("http://localhost:8080/api/touchpoints/" + tp.getId());
 
 			Future<HttpResponse> responseFuture = client.execute(request, null);
 			HttpResponse response = responseFuture.get();
 
 			show("response: %s", response.getStatusLine());
 
-			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			/*if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 
 				// create an object input stream using getContent() from the
 				// response entity (accessible via getEntity())
@@ -205,13 +205,13 @@ public class ShowTouchpointService {
 				show("equals(): %s", tp.equals(receivedTp));
 				show("== : %s", tp == receivedTp);
 
-			}
+			}*/
 		}
 
 		catch (Exception e){
 			logger.error("got exception: " + e, e);
 			throw new RuntimeException(e);
-		}*/
+		}
 	}
 
 	/**

@@ -81,7 +81,7 @@ public class TouchpointCRUDExecutor {
 	 */
 	public boolean deleteTouchpoint(final long toDeleteId) {
 		logger.info("deleteTouchpoint(): " + toDeleteId);
-		
+
 		return this.touchpoints.remove(new AbstractTouchpoint() {
 
 			@Override

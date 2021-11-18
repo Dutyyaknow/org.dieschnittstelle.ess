@@ -178,34 +178,29 @@ public class ShowTouchpointService {
 	 */
 	public void deleteTouchpoint(AbstractTouchpoint tp) {
 		logger.info("deleteTouchpoint(): will delete: " + tp);
+		logger.info("Touchpoint ID: " + tp.getId());
 
 		createClient();
 
 		logger.debug("client running: {}",client.isRunning());
 
 		try {
-			HttpDelete request = new HttpDelete("http://localhost:8080/api/touchpoints/" + tp.getId());
+			HttpDelete deleteRequest = new HttpDelete("http://localhost:8080/api/touchpoints/" + tp.getId());
 
-			Future<HttpResponse> responseFuture = client.execute(request, null);
+			Future<HttpResponse> responseFuture = client.execute(deleteRequest, null);
 			HttpResponse response = responseFuture.get();
 
 			show("response: %s", response.getStatusLine());
 
-			/*if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-
-				// create an object input stream using getContent() from the
-				// response entity (accessible via getEntity())
-				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
-
-				// read the touchpoint object from the input stream
-				AbstractTouchpoint receivedTp = (AbstractTouchpoint) ois.readObject();
-
-				// return the object that you have read from the response
-				show("receivedTp: %s", receivedTp);
-				show("equals(): %s", tp.equals(receivedTp));
-				show("== : %s", tp == receivedTp);
-
-			}*/
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				show("Touchpoint was successfully deleted.");
+			}
+			else{
+				String err = "could not successfully execute request. Got status code: "
+						+ response.getStatusLine().getStatusCode();
+				logger.error(err);
+				throw new RuntimeException(err);
+			}
 		}
 
 		catch (Exception e){

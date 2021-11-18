@@ -2,6 +2,8 @@ package org.dieschnittstelle.ess.ser;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -103,16 +105,21 @@ public class TouchpointServiceServlet extends HttpServlet {
 		TouchpointCRUDExecutor exec = (TouchpointCRUDExecutor) getServletContext().getAttribute("touchpointCRUD");
 
 		try {
+			String url = request.getRequestURL().toString();
+			String[] urlPath = url.split("/");
+
+			long tpID = Long.parseLong(urlPath[urlPath.length-1]);
+
+			response.setStatus(HttpServletResponse.SC_OK);
+
 			ObjectOutputStream oos = new ObjectOutputStream(
 					response.getOutputStream());
 
-			//exec.deleteTouchpoint(request);
-			// write the object
-			oos.writeObject(exec.readAllTouchpoints());
+			exec.deleteTouchpoint(tpID);
 			oos.close();
-			response.setStatus(HttpServletResponse.SC_OK);
 
 		} catch (Exception e) {
+			logger.error("got exception: " + e, e);
 			throw new RuntimeException(e);
 		}
 	}

@@ -56,10 +56,11 @@ public class ProductCRUDServiceOPIImpl {
 	@POST
 	// TODO: ueberlegen Sie, wie Sie createCampaign() von createProduct() unterscheidbar machen koennen - wenn
 	//  Sie JRS3 umgesetzt haben, koennen Sie die auskommentierte Codezeile entfernen
+	@Path("/campaign")
 	public Campaign createCampaign(
 			Campaign prod) {
-//		return (Campaign) this.service.createProduct(prod);
-		return null;
+		return (Campaign) this.service.createProduct(prod);
+//		return null;
 	}
 
 	@GET
@@ -72,20 +73,20 @@ public class ProductCRUDServiceOPIImpl {
 
 	@PUT
 	@Path("/{id}")
-	public IndividualisedProductItem updateProduct(long id,
+	public IndividualisedProductItem updateProduct(@PathParam("id")long id,
 			IndividualisedProductItem update) {
 		return (IndividualisedProductItem)this.service.updateProduct(id,update);
 	}
 
 	@DELETE
 	@Path("/{id}")
-	public boolean deleteProduct(long id) {
+	public boolean deleteProduct(@PathParam("id")long id) {
 		return this.service.deleteProduct(id);
 	}
 
 	@GET
 	@Path("/{id}")
-	public IndividualisedProductItem readProduct(long id) {
+	public IndividualisedProductItem readProduct(@PathParam("id")long id) {
 		IndividualisedProductItem item = (IndividualisedProductItem)this.service.readProduct(id);
 		return item;
 	}

@@ -1,369 +1,4 @@
 ---
-paths:
-  /api/metrics:
-    get:
-      parameters: []
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                type: "string"
-          description: "default response"
-        default:
-          content:
-            text/plain:
-              schema:
-                type: "string"
-          description: "default response"
-      operationId: "getText_1_2"
-  /api/metrics/{registry}/{metric}:
-    get:
-      parameters:
-      - name: "registry"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      - name: "metric"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-      operationId: "getJson_1_2"
-    options:
-      parameters:
-      - name: "registry"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      - name: "metric"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-      operationId: "getMetadata"
-  /api/metrics/{registry}:
-    get:
-      parameters:
-      - name: "registry"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-      operationId: "getJson_1"
-    options:
-      parameters:
-      - name: "registry"
-        in: "path"
-        schema:
-          type: "string"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/java_lang_Object"
-          description: "default response"
-      operationId: "getMetadata_1"
-  /api/health:
-    get:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                properties: {}
-                type: "object"
-                nullable: true
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                properties: {}
-                type: "object"
-                nullable: true
-          description: "default response"
-      operationId: "getChecks"
-  /api/opi/products/{id}:
-    put:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: "integer"
-        required: true
-      operationId: "updateProduct"
-    get:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: "integer"
-        required: true
-      operationId: "readProduct"
-    delete:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "boolean"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "boolean"
-          description: "default response"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: "integer"
-        required: true
-      operationId: "deleteProduct"
-  /api/opi/products:
-    post:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: "object"
-              $ref: "#/components/schemas/IndividualisedProductItem"
-        required: true
-      operationId: "createProduct"
-    get:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  type: "object"
-                  $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  type: "object"
-                  $ref: "#/components/schemas/IndividualisedProductItem"
-          description: "default response"
-      operationId: "readAllProducts"
-  /api/async/touchpoints/{id}: {}
-  /api/async/touchpoints: {}
-  /api/opi/touchpoints:
-    post:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: "object"
-              $ref: "#/components/schemas/StationaryTouchpoint"
-        required: true
-      operationId: "createTouchpoint"
-    get:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  type: "object"
-                  $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  type: "object"
-                  $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-      operationId: "readAllTouchpoints"
-  /api/opi/touchpoints/{id}:
-    get:
-      parameters:
-      - name: "id"
-        in: "path"
-        schema:
-          type: "integer"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "object"
-                $ref: "#/components/schemas/StationaryTouchpoint"
-          description: "default response"
-      operationId: "readTouchpoint"
-    delete:
-      parameters:
-      - name: "id"
-        in: "path"
-        schema:
-          type: "integer"
-        style: "simple"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: "boolean"
-          description: "default response"
-        default:
-          content:
-            application/json:
-              schema:
-                type: "boolean"
-          description: "default response"
-      operationId: "deleteTouchpoint"
 components:
   schemas:
     java_lang_Object:
@@ -405,19 +40,10 @@ components:
       properties:
         product:
           type: "object"
-          $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_erp_AbstractProduct"
+          $ref: "#/components/schemas/IndividualisedProductItem"
         id:
           type: "integer"
         units:
-          type: "integer"
-      type: "object"
-    org_dieschnittstelle_ess_entities_erp_AbstractProduct:
-      properties:
-        price:
-          type: "integer"
-        name:
-          type: "string"
-        id:
           type: "integer"
       type: "object"
     StationaryTouchpoint:
@@ -459,11 +85,53 @@ components:
         houseNr:
           type: "string"
       type: "object"
+    org_dieschnittstelle_ess_entities_crm_CustomerTransaction:
+      properties:
+        date:
+          type: "string"
+          nullable: true
+        id:
+          type: "integer"
+        completed:
+          type: "boolean"
+        value:
+          type: "integer"
+        touchpoint:
+          type: "object"
+          $ref: "#/components/schemas/AbstractTouchpoint"
+        items:
+          type: "array"
+          items:
+            type: "object"
+            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_ShoppingCartItem"
+        customer:
+          type: "object"
+          $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_Customer"
+      type: "object"
+    AbstractTouchpoint:
+      properties:
+        erpPointOfSaleId:
+          type: "integer"
+        name:
+          type: "string"
+        id:
+          type: "integer"
+        customers:
+          type: "array"
+          items:
+            type: "object"
+            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_Customer"
+        transactions:
+          type: "array"
+          items:
+            type: "object"
+            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_CustomerTransaction"
+      type: "object"
     org_dieschnittstelle_ess_entities_crm_Customer:
       properties:
-        lastName:
-          type: "string"
         firstName:
+          type: "string"
+        lastName:
           type: "string"
         address:
           type: "object"
@@ -494,48 +162,6 @@ components:
         email:
           type: "string"
       type: "object"
-    AbstractTouchpoint:
-      properties:
-        erpPointOfSaleId:
-          type: "integer"
-        name:
-          type: "string"
-        id:
-          type: "integer"
-        customers:
-          type: "array"
-          items:
-            type: "object"
-            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_Customer"
-        transactions:
-          type: "array"
-          items:
-            type: "object"
-            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_CustomerTransaction"
-      type: "object"
-    org_dieschnittstelle_ess_entities_crm_CustomerTransaction:
-      properties:
-        date:
-          type: "string"
-          nullable: true
-        id:
-          type: "integer"
-        completed:
-          type: "boolean"
-        value:
-          type: "integer"
-        items:
-          type: "array"
-          items:
-            type: "object"
-            $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_ShoppingCartItem"
-        touchpoint:
-          type: "object"
-          $ref: "#/components/schemas/AbstractTouchpoint"
-        customer:
-          type: "object"
-          $ref: "#/components/schemas/org_dieschnittstelle_ess_entities_crm_Customer"
-      type: "object"
     org_dieschnittstelle_ess_entities_crm_ShoppingCartItem:
       properties:
         productObj:
@@ -550,16 +176,425 @@ components:
         units:
           type: "integer"
       type: "object"
+    org_dieschnittstelle_ess_entities_erp_AbstractProduct:
+      properties:
+        price:
+          type: "integer"
+        name:
+          type: "string"
+        id:
+          type: "integer"
+      type: "object"
+paths:
+  /api/metrics/{registry}/{metric}:
+    get:
+      parameters:
+      - name: "registry"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      - name: "metric"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+      operationId: "getJson_1"
+    options:
+      parameters:
+      - name: "registry"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      - name: "metric"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+      operationId: "getMetadata"
+  /api/metrics:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+      operationId: "getJson"
+  /api/metrics/{registry}:
+    get:
+      parameters:
+      - name: "registry"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+      operationId: "getJson_1_2"
+    options:
+      parameters:
+      - name: "registry"
+        in: "path"
+        schema:
+          type: "string"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/java_lang_Object"
+          description: "default response"
+      operationId: "getMetadata_1"
+  /api/health:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: "object"
+                nullable: true
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: "object"
+                nullable: true
+          description: "default response"
+      operationId: "getChecks"
+  /api/opi/products/{id}:
+    get:
+      parameters:
+      - name: "id"
+        in: "path"
+        schema:
+          type: "integer"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+      operationId: "readProduct"
+    put:
+      parameters:
+      - name: "id"
+        in: "path"
+        schema:
+          type: "integer"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+      operationId: "updateProduct"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              $ref: "#/components/schemas/IndividualisedProductItem"
+        required: true
+    delete:
+      parameters:
+      - name: "id"
+        in: "path"
+        schema:
+          type: "integer"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "boolean"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "boolean"
+          description: "default response"
+      operationId: "deleteProduct"
+  /api/opi/products:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+      operationId: "readAllProducts"
+    post:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/IndividualisedProductItem"
+          description: "default response"
+      operationId: "createProduct"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              $ref: "#/components/schemas/IndividualisedProductItem"
+        required: true
+  /api/opi/products/campaign:
+    post:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/Campaign"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/Campaign"
+          description: "default response"
+      operationId: "createCampaign"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              $ref: "#/components/schemas/Campaign"
+        required: true
+  /api/async/touchpoints: {}
+  /api/async/touchpoints/{id}: {}
+  /api/opi/touchpoints:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+      operationId: "readAllTouchpoints"
+    post:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+      operationId: "createTouchpoint"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              $ref: "#/components/schemas/StationaryTouchpoint"
+        required: true
+  /api/opi/touchpoints/{id}:
+    get:
+      parameters:
+      - name: "id"
+        in: "path"
+        schema:
+          type: "integer"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "object"
+                $ref: "#/components/schemas/StationaryTouchpoint"
+          description: "default response"
+      operationId: "readTouchpoint"
+    delete:
+      parameters:
+      - name: "id"
+        in: "path"
+        schema:
+          type: "integer"
+        required: true
+        style: "simple"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: "boolean"
+          description: "default response"
+        default:
+          content:
+            application/json:
+              schema:
+                type: "boolean"
+          description: "default response"
+      operationId: "deleteTouchpoint"
 info:
   version: "0.1"
   description: ""
   license:
     name: ""
     url: ""
-  title: "WebAPI for JRS, OPI and WSV exercises"
   termsOfService: ""
   contact:
     name: ""
     url: ""
     email: ""
+  title: "WebAPI for JRS, OPI and WSV exercises"
 openapi: "3.0.1"

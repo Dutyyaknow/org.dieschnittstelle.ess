@@ -1,6 +1,7 @@
 package org.dieschnittstelle.ess.mip.components.erp.crud.impl;
 
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
+import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.dieschnittstelle.ess.mip.components.erp.crud.api.ProductCRUD;
 import org.dieschnittstelle.ess.utils.interceptors.Logged;
 
@@ -38,7 +39,7 @@ public class ProductCRUDImpl implements ProductCRUD {
 
     @Override
     public AbstractProduct readProduct(long productID) {
-        return null;
+        return em.find(AbstractProduct.class,productID);
     }
 
     @Override

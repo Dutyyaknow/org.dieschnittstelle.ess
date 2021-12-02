@@ -13,31 +13,31 @@ public class StockSystemClient implements StockSystem {
 
 	public StockSystemClient() throws Exception {
 		// TODO: remove the comments and complete the implementation
-//		this.serviceProxy = ServiceProxyFactory.getInstance().getProxy(null);
+		this.serviceProxy = ServiceProxyFactory.getInstance().getProxy(StockSystemService.class);
 	}
 
 	// TODO: uncomment the commented sections from all the following methods and remove the default return statements
 
 	@Override
 	public void addToStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
-//		this.serviceProxy.addToStock(product.getId(),pointOfSaleId,units);
+		this.serviceProxy.addToStock(product.getId(),pointOfSaleId,units);
 	}
 
 	@Override
 	public void removeFromStock(IndividualisedProductItem product, long pointOfSaleId,
 								int units) {
-//		this.serviceProxy.removeFromStock(product.getId(),pointOfSaleId,units);
+		this.serviceProxy.removeFromStock(product.getId(),pointOfSaleId,units);
 	}
 
 	@Override
 	public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-//		return this.serviceProxy.getProductsOnStock(pointOfSaleId);
+		//return this.serviceProxy.getProductsOnStock(pointOfSaleId);
 		return new ArrayList<>();
 	}
 
 	@Override
 	public List<IndividualisedProductItem> getAllProductsOnStock() {
-//		return this.serviceProxy.getAllProductsOnStock();
+		//return this.serviceProxy.getAllProductsOnStock();
 		return new ArrayList<>();
 	}
 
@@ -49,7 +49,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-//		return this.serviceProxy.getTotalUnitsOnStock(product.getId());
+		//return this.serviceProxy.getTotalUnitsOnStock(product.getId());
 		return 0;
 	}
 

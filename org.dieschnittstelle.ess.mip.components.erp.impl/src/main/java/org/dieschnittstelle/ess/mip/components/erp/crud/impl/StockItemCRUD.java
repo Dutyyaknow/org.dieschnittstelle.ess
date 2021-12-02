@@ -5,6 +5,12 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.dieschnittstelle.ess.entities.erp.StockItem;
+import org.dieschnittstelle.ess.utils.interceptors.Logged;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 /*
  * TODO MIP+JPA3/4/6:

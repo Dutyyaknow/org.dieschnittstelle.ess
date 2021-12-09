@@ -8,6 +8,7 @@ import org.dieschnittstelle.ess.utils.interceptors.Logged;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,17 @@ public class ProductCRUDImpl implements ProductCRUD {
 
     @Override
     public List<AbstractProduct> readAllProducts() {
-        return new ArrayList<>();
+        Query query = em.createQuery("SELECT ap FROM AbstractProduct ap");
+
+        List<AbstractProduct> abstractProducts = (List<AbstractProduct>) query
+                .getResultList();
+
+        return abstractProducts;
     }
 
     @Override
     public AbstractProduct updateProduct(AbstractProduct update) {
+        update = em.merge(update);
         return update;
     }
 
@@ -44,6 +51,7 @@ public class ProductCRUDImpl implements ProductCRUD {
 
     @Override
     public boolean deleteProduct(long productID) {
-        return false;
+        em.remove(em.find(AbstractProduct.class,productID));
+        return true;
     }
 }

@@ -3,11 +3,15 @@ package org.dieschnittstelle.ess.entities.erp;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.logging.log4j.Logger;
+import org.dieschnittstelle.ess.utils.jsonb.JsonbJsonTypeInfoHandler;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+import javax.json.bind.annotation.JsonbTypeSerializer;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@JsonbTypeSerializer(JsonbJsonTypeInfoHandler.class)
 @Schema(name = "ProductBundle")
 public class ProductBundle implements Serializable {
 
@@ -18,6 +22,8 @@ public class ProductBundle implements Serializable {
 	 */
 	private static final long serialVersionUID = 1501911067906145681L;
 
+	@Id
+	@GeneratedValue
 	private long id;
 
 	// this had been changed to AbstractProduct due to some jboss/jackson serialisation issue

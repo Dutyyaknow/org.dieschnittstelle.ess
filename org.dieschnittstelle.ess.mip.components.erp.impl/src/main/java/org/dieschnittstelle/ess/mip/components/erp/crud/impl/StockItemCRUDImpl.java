@@ -29,11 +29,11 @@ public class StockItemCRUDImpl implements StockItemCRUD {
 
     @Override
     public StockItem readStockItem(IndividualisedProductItem prod, PointOfSale pos) {
-        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.pos.id = " + pos.getId());
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.pos.id = " + pos.getId() + " AND si.product.id = " + prod.getId());
         List<StockItem> stockItems = query.getResultList();
 
         if (stockItems.size() > 0) {
-            System.out.println("stockItems.size bigger than 0");
+            return stockItems.get(0);
         }
         return null;
     }
@@ -45,16 +45,34 @@ public class StockItemCRUDImpl implements StockItemCRUD {
 
     @Override
     public List<StockItem> readAllStockItems() {
+        Query query = em.createQuery("SELECT si FROM StockItem si");
+        List<StockItem> stockItems = query.getResultList();
+
+        if (stockItems.size() > 0) {
+            return stockItems;
+        }
         return null;
     }
 
     @Override
     public List<StockItem> readStockItemsForProduct(IndividualisedProductItem prod) {
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.prod.id = " + prod.getId());
+        List<StockItem> stockItems = query.getResultList();
+
+        if (stockItems.size() > 0) {
+            return stockItems;
+        }
         return null;
     }
 
     @Override
     public List<StockItem> readStockItemsForPointOfSale(PointOfSale pos) {
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.pos.id = " + pos.getId());
+        List<StockItem> stockItems = query.getResultList();
+
+        if (stockItems.size() > 0) {
+            return stockItems;
+        }
         return null;
     }
 }

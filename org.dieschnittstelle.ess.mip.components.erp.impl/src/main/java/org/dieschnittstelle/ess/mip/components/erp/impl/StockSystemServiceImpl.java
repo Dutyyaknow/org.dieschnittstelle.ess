@@ -35,20 +35,26 @@ public class StockSystemServiceImpl implements StockSystemService {
         this.addToStock(productId, pointOfSaleId, -units);
     }
 
-//    @Override
-//    public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public int getUnitsOnStock(long productId, long pointOfSaleId) {
-//        AbstractProduct product = productCRUD.readProduct(productId);
-//
-//        return stockSystem.getUnitsOnStock((IndividualisedProductItem) product, pointOfSaleId);
-//    }
-//
-//    @Override
-//    public List<Long> getPointsOfSale(long productId) {
-//        return null;
-//    }
+    @Override
+    public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
+        return pointOfSaleId > 0
+                ? this.stockSystem.getProductsOnStock(pointOfSaleId)
+                : this.stockSystem.getAllProductsOnStock();
+    }
+
+    @Override
+    public int getUnitsOnStock(long productId, long pointOfSaleId) {
+        AbstractProduct product = productCRUD.readProduct(productId);
+
+        return pointOfSaleId > 0
+                ? this.stockSystem.getUnitsOnStock((IndividualisedProductItem) product, pointOfSaleId)
+                : this.stockSystem.getTotalUnitsOnStock((IndividualisedProductItem) product);
+    }
+
+    @Override
+    public List<Long> getPointsOfSale(long productId) {
+        AbstractProduct product = productCRUD.readProduct(productId);
+
+        return this.stockSystem.getPointsOfSale((IndividualisedProductItem) product);
+    }
 }

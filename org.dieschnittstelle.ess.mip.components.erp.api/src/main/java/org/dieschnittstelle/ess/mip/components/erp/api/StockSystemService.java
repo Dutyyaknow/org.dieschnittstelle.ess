@@ -30,22 +30,22 @@ public interface StockSystemService {
 	@DELETE
     void removeFromStock(@QueryParam("productId") long productId, @QueryParam("pointOfSaleId") long pointOfSaleId, @QueryParam("unit") int units);
 
-//	/**
-//	 * returns all products on stock or, if pointOfSaleId is specified, the products for some pointOfSale
-//	 */
-//	@GET
-//    List<IndividualisedProductItem> getProductsOnStock(@QueryParam("pointOfSaleId") long pointOfSaleId);
-//
-//	/**
-//	 * returns the units on stock for a given product overall or, if a pointOfSaleId is specified, at some point of sale
-//	 */
-//	@GET
-//    int getUnitsOnStock(@QueryParam("productId") long productId, @QueryParam("pointOfSaleId") long pointOfSaleId);
-//
-//	/**
-//	 * returns the points of sale where some product is available
-//	 */
-//	@GET
-//    List<Long> getPointsOfSale(@QueryParam("productId") long productId);
+	/**
+	 * returns all products on stock or, if pointOfSaleId is specified, the products for some pointOfSale
+	 */
+	@GET
+    List<IndividualisedProductItem> getProductsOnStock(@QueryParam("pointOfSaleId") long pointOfSaleId);
+
+	/**
+	 * returns the units on stock for a given product overall or, if a pointOfSaleId is specified, at some point of sale
+	 */
+	@GET
+    int getUnitsOnStock(@QueryParam("productId") long productId, @QueryParam("pointOfSaleId") long pointOfSaleId);
+
+	/**
+	 * returns the points of sale where some product is available
+	 */
+	@GET
+    List<Long> getPointsOfSale(@QueryParam("productId") long productId);
 
 }

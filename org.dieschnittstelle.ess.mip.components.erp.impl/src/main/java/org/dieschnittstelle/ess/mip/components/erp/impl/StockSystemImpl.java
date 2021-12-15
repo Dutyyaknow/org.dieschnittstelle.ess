@@ -64,10 +64,12 @@ public class StockSystemImpl implements StockSystem {
     public List<IndividualisedProductItem> getAllProductsOnStock() {
         List<PointOfSale> pos = posCRUD.readAllPointsOfSale();
         List<IndividualisedProductItem> products = new ArrayList<>();
+
         for (PointOfSale p : pos) {
-            if (!products.contains((IndividualisedProductItem) getProductsOnStock(p.getId()))) {
-                products.add((IndividualisedProductItem) getProductsOnStock(p.getId()));
-            }
+            //if (!products.contains(getProductsOnStock(p.getId()))) {
+                IndividualisedProductItem item = (IndividualisedProductItem)getProductsOnStock(p.getId());
+                products.add(item);
+            //}
         }
         return products;
     }
@@ -84,6 +86,7 @@ public class StockSystemImpl implements StockSystem {
     public int getTotalUnitsOnStock(IndividualisedProductItem product) {
         List<StockItem> stockItems = stockItemCRUD.readStockItemsForProduct(product);
         int totalUnits = 0;
+
         for (StockItem s : stockItems) {
             totalUnits += s.getUnits();
         }
@@ -95,6 +98,7 @@ public class StockSystemImpl implements StockSystem {
     public List<Long> getPointsOfSale(IndividualisedProductItem product) {
         List<StockItem> stockItems = stockItemCRUD.readStockItemsForProduct(product);
         List<Long> posIds = new ArrayList<>();
+
         for (StockItem s : stockItems) {
             posIds.add(s.getPos().getId());
         }

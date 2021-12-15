@@ -49,7 +49,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-		return this.serviceProxy.getUnitsOnStock(product.getId(), 0);
+		return this.serviceProxy.getUnitsOnStock(product.getId(), -1);
 //		return 0;
 	}
 

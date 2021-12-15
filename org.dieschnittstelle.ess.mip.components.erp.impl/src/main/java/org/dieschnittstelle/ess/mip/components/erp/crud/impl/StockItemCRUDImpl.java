@@ -56,7 +56,7 @@ public class StockItemCRUDImpl implements StockItemCRUD {
 
     @Override
     public List<StockItem> readStockItemsForProduct(IndividualisedProductItem prod) {
-        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.prod.id = " + prod.getId());
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.product.id = " + prod.getId());
         List<StockItem> stockItems = query.getResultList();
 
         if (stockItems.size() > 0) {

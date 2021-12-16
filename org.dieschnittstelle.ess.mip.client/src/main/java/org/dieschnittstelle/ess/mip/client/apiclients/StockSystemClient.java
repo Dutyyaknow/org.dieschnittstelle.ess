@@ -37,7 +37,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public List<IndividualisedProductItem> getAllProductsOnStock() {
-		return this.serviceProxy.getProductsOnStock(-1);
+		return this.serviceProxy.getProductsOnStock(0);
 //		return new ArrayList<>();
 	}
 
@@ -49,7 +49,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-		return this.serviceProxy.getUnitsOnStock(product.getId(), -1);
+		return this.serviceProxy.getUnitsOnStock(product.getId(), 0);
 //		return 0;
 	}
 

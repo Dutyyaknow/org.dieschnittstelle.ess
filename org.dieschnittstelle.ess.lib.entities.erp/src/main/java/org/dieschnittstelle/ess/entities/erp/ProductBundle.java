@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@JsonbTypeSerializer(JsonbJsonTypeInfoHandler.class)
 @Schema(name = "ProductBundle")
 public class ProductBundle implements Serializable {
 

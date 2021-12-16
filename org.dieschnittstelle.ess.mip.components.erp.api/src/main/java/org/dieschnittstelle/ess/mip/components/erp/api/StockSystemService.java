@@ -47,6 +47,7 @@ public interface StockSystemService {
 	 * returns the points of sale where some product is available
 	 */
 	@GET
+	@Path("/poss")
     List<Long> getPointsOfSale(@QueryParam("productId") long productId);
 
 }

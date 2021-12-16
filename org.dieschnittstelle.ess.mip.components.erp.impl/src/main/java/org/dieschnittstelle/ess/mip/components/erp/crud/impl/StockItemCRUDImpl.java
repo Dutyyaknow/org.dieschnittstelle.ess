@@ -70,9 +70,6 @@ public class StockItemCRUDImpl implements StockItemCRUD {
         Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.pos.id = " + pos.getId());
         List<StockItem> stockItems = query.getResultList();
 
-        if (stockItems.size() > 0) {
-            return stockItems;
-        }
-        return null;
+        return stockItems;
     }
 }

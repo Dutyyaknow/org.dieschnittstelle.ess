@@ -13,7 +13,9 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @ApplicationScoped
 @Transactional
@@ -50,27 +52,30 @@ public class StockSystemImpl implements StockSystem {
 
     @Override
     public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
+
         PointOfSale pos = posCRUD.readPointOfSale(pointOfSaleId);
         List<StockItem> stockItems = stockItemCRUD.readStockItemsForPointOfSale(pos);
+
         List<IndividualisedProductItem> products = new ArrayList<>();
 
         for (StockItem s : stockItems) {
             products.add(s.getProduct());
         }
+
         return products;
     }
 
     @Override
     public List<IndividualisedProductItem> getAllProductsOnStock() {
         List<PointOfSale> pos = posCRUD.readAllPointsOfSale();
-        List<IndividualisedProductItem> products = new ArrayList<>();
+        Set<IndividualisedProductItem> productItemSet = new HashSet<>();
 
         for (PointOfSale p : pos) {
-            //if (!products.contains(getProductsOnStock(p.getId()))) {
-                IndividualisedProductItem item = (IndividualisedProductItem)getProductsOnStock(p.getId());
-                products.add(item);
-            //}
+            productItemSet.addAll(getProductsOnStock(p.getId()));
         }
+
+        List<IndividualisedProductItem> products = new ArrayList<>(productItemSet);
+
         return products;
     }
 

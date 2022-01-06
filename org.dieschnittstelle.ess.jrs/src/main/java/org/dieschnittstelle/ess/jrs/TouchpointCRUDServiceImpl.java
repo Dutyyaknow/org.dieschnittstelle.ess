@@ -53,6 +53,7 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
         return this.touchpointCRUD.deleteObject(id);
     }
 
+
     @Override
     public StationaryTouchpoint readTouchpoint(long id) {
         StationaryTouchpoint tp = (StationaryTouchpoint) this.touchpointCRUD.readObject(id);
@@ -66,4 +67,10 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
     /*
      * UE JRS1: implement the method for updating touchpoints
      */
+    @Override
+    public StationaryTouchpoint updateTouchpoint(long id, StationaryTouchpoint touchpoint) {
+        return this.touchpointCRUD.updateObject(touchpoint);
+    }
 }
+
+

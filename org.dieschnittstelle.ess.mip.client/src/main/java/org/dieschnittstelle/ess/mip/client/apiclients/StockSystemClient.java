@@ -20,7 +20,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public void addToStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
-		//this.serviceProxy.addToStock(product.getId(),pointOfSaleId,units);
+		this.serviceProxy.addToStock(product.getId(),pointOfSaleId,units);
 	}
 
 	@Override

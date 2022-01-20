@@ -19,14 +19,14 @@ public interface ITouchpointCRUDService {
 	public StationaryTouchpoint readTouchpoint(@PathParam("touchpointId") long id);
 
 	@POST
-	public StationaryTouchpoint createTouchpoint(AbstractTouchpoint touchpoint);
-	
+	public StationaryTouchpoint createTouchpoint(StationaryTouchpoint touchpoint);
+
 	@DELETE
 	@Path("/{touchpointId}")
 	public boolean deleteTouchpoint(@PathParam("touchpointId") long id);
 
 	@PUT
 	@Path("/{touchpointId}")
-	public StationaryTouchpoint updateTouchpoint(@PathParam("touchpointId") long id, AbstractTouchpoint touchpoint);
+	public StationaryTouchpoint updateTouchpoint(@PathParam("touchpointId") long id, StationaryTouchpoint touchpoint);
 
 }

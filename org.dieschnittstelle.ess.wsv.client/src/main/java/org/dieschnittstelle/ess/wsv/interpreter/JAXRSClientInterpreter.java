@@ -79,7 +79,7 @@ public class JAXRSClientInterpreter implements InvocationHandler {
             url += meth.getAnnotation(Path.class).value();
         }
 
-        show("url: (initially)" + url);
+        show("url (initially): " + url);
 
         // TODO: check whether we have a path annotation and append the url (path params will be handled when looking at the method arguments)
 

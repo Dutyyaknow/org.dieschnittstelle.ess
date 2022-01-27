@@ -101,6 +101,9 @@ public class JAXRSClientInterpreter implements InvocationHandler {
                 if (meth.isAnnotationPresent(Path.class)) {
                     url = StringUtils.replace(url, "{" + nameOfParam + "}", args[0].toString());
                 }
+                if (args.length >= 2) {
+                    bodyValue = args[1];
+                }
             }
             else {
                 // if we do not have a path param, we assume the argument value will be sent via the body of the request
